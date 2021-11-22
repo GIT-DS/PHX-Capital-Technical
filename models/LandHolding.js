@@ -34,7 +34,11 @@ const LandHoldingSchema = new Schema({
     type: String,
     required: true
   },
-  Range: {
+  range: {
+    type: String,
+    required: true
+  },
+  titleSource: {
     type: String,
     required: true
   },
