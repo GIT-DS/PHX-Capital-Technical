@@ -4,13 +4,13 @@ const validText = require('./valid-text');
 module.exports = function validateAccountInput(data) {
   let errors = {};
 
-  data.accountName = validText(data.accountName) ? data.accountName : '';
+  data.name = validText(data.name) ? data.name : '';
   data.entityType = validText(data.entityType) ? data.entityType : '';
   data.ownerType = validText(data.ownerType) ? data.ownerType : '';
   data.address = validText(data.address) ? data.address : '';
 
-  if (Validator.isEmpty(data.accountName)) {
-    errors.accountName = 'Account Name field is required';
+  if (Validator.isEmpty(data.name)) {
+    errors.name = 'Account Name field is required';
   }
 
   if (!Validator.equals(data.entityType, "Company") && 
