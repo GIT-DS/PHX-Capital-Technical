@@ -3,7 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose')
 const passport = require('passport')
 
-const Account = require('../../models/Account')
+const Account = require('../../models/Account');
+const LandHolding = require("../../models/LandHolding");
 const validateAccountInput = require('../../validation/account')
 
 router.get('/', (req, res) => {
@@ -11,6 +12,18 @@ router.get('/', (req, res) => {
         .then(accounts => res.json(accounts))
         .catch( err => res.status(404).json({ noAccountsFound: 'No Accounts found' }))
 });
+
+router.get('/:id', (req, res) => {
+    Account.findById(req.params.id).then(account => {
+        let acc = {
+            name: account.name,
+            entityType: account.entityType,
+            ownerType: account.ownerType,
+            address: account.address
+        }
+        return acc;
+    })
+})
 
 router.post('/create', 
     passport.authenticate('jwt', { session: false }),
@@ -29,7 +42,7 @@ router.post('/create',
                     name: req.body.name,
                     entityType: req.body.entityType,
                     ownerType: req.body.ownerType,
-                    address: req.body.addreses
+                    address: req.body.address
                 });
         
                 newAccount.save().then( account => res.json(account))
@@ -65,6 +78,24 @@ router.patch('/update/:id',
 
 );
 
+router.delete('/delete/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        let acc = Account.findById(req.params.id).then((account) => {
+        if (account.id != req.account.id) {
+            return res
+            .status(400)
+            .json({ cannotdelete: 'You can only delete your own accounts' });
+        } else {
+            
+            Account.deleteOne({ _id: req.params.id }).then(()=>LandHolding.delete({account: acc}))
+            .then(() => {
+            return res.status(200).json({ success: "Account and it's associated Land Holdings deleted" });
+            });
+        }
+        });
+    }
 
+)
 
 module.exports = router;

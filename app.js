@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
+const accounts = require("./routes/api/accounts");
+const landHoldings = require("./routes/api/landHoldings");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -22,7 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
+app.use("/api/accounts", accounts);
+app.use("/api/landHoldings", landHoldings);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

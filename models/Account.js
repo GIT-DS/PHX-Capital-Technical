@@ -19,7 +19,7 @@ const AccountSchema = new Schema({
     required: true
   },
   numLandHoldings: {
-    type: number,
+    type: Number,
     required: true
   },
   date: {
@@ -28,4 +28,4 @@ const AccountSchema = new Schema({
   }
 });
 
-module.exports = Tweet = mongoose.model('tweet', TweetSchema);
+module.exports = Account = mongoose.model('account', AccountSchema);

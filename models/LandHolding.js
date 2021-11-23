@@ -48,4 +48,4 @@ const LandHoldingSchema = new Schema({
   }
 });
 
-module.exports = Tweet = mongoose.model('tweet', TweetSchema);
+module.exports = LandHolding = mongoose.model('landHolding', LandHoldingSchema);
