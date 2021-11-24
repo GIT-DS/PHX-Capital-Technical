@@ -1,15 +1,15 @@
-import {RECEIVE_ACCOUNTS, RECEIVE_ACCOUNT, REMOVE_ACCOUNT} from '../actions/account_actions'
+import {RECEIVE_LANDHOLDINGS, RECEIVE_LANDHOLDING, REMOVE_LANDHOLDING} from '../actions/landholdings_actions'
 
-const accounts = (state = [], action) => {
+const landHoldings = (state = [], action) => {
     Object.freeze(state);
     let newState = [];
     switch (action.type) {
-      case RECEIVE_ACCOUNTS:
+      case RECEIVE_LANDHOLDINGS:
         return action.accounts.data;
-      case RECEIVE_ACCOUNT:
+      case RECEIVE_LANDHOLDING:
           newState.push(action.accounts.data)
           return newState 
-      case REMOVE_ACCOUNT:
+      case REMOVE_LANDHOLDING:
         newState = [...state];
         for (let i = 0; i < newState.length; i++){
           if (newState[i].id === action.recipeId) {
@@ -20,6 +20,6 @@ const accounts = (state = [], action) => {
       default:
         return state;
     }
-};
+  };
 
-export default accounts;
+export default landHoldings;

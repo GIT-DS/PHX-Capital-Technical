@@ -13,7 +13,7 @@ export const createAccount = account => {
 }
 
 export const editAccount = account => {
-    return axios.patch(`api/recipes/update/${account.id}`, account)
+    return axios.patch(`api/accounts/update/${account.id}`, account)
 }
 
 export const deleteAccount = accountId => {

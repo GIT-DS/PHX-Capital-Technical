@@ -1,16 +1,16 @@
 import * as AccountAPI from '../util/account_util'
-export const FETCH_ACCOUNTS = "FETCH_ACCOUNTS"
-export const FETCH_ACCOUNT = "FETCH_ACCOUNT"
+export const RECEIVE_ACCOUNTS = "RECEIVE_ACCOUNTS"
+export const RECEIVE_ACCOUNT = "RECEIVE_ACCOUNT"
 export const REMOVE_ACCOUNT = "REMOVE_ACCOUNT"
 
 
 export const getAllAccounts = accounts => ({
-    type: FETCH_ACCOUNTS,
+    type: RECEIVE_ACCOUNTS,
     accounts
 })
 
 export const getAccount = account => ({
-    type: FETCH_CATEGORY,
+    type: RECEIVE_ACCOUNT,
     account
 })
 
@@ -27,7 +27,7 @@ export const fetchAccount = accountId => dispatch => {
 }
 
 export const createAccount = account => dispatch => {
-    return AccountAPI.createAccount(account).then( account => dispatch( getAccount(category) ) )
+    return AccountAPI.createAccount(account).then( account => dispatch( getAccount(account) ) )
 }
 
 export const deleteAccount = accountId => dispatch => {

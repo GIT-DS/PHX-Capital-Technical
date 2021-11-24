@@ -38,7 +38,7 @@ class NavBar extends React.Component {
   render() {
       return (
         <div id='nav-bar'>
-            <h1>Pheonix Capital Group</h1>
+            <h1><Link to='/'>Pheonix Capital Group</Link></h1>
             { this.getLinks() }
         </div>
       );
