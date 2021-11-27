@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom'
 
 class LandHoldingIndex extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.deleteClickHandler = this.deleteClickHandler.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchAllLandHoldings(this.props.currentUserId)
+    }
+
+    deleteClickHandler(e, landHoldingId){
+        this.props.deleteLandHolding(landHoldingId)
     }
 
     render(){
@@ -28,6 +33,10 @@ class LandHoldingIndex extends React.Component{
                             <p>Township: {landHolding.township}</p>
                             <p>Range: {landHolding.range}</p>
                             <p>Title Source: {landHolding.titleSource}</p>
+                        </div>
+                        <div className='buttons'>
+                            <Link to={`/landholdings/edit/${landHolding._id}`}><i className="fas fa-edit" /></Link>
+                            <i className="fas fa-trash-alt" onClick={e => this.deleteClickHandler(landHolding._id)}/>
                         </div>
                     </div>
                 ))}

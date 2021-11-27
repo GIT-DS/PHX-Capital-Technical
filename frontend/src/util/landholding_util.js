@@ -13,7 +13,7 @@ export const createLandHolding = (landHolding) => {
 }
 
 export const editLandHolding = landHolding => {
-    return axios.patch(`api/landHoldings/update/${landHolding.id}`, landHolding)
+    return axios.patch(`api/landHoldings/update/${landHolding._id}`, landHolding)
 }
 
 export const deleteLandHolding = landHoldingId => {

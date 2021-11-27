@@ -9,6 +9,7 @@ import LandHoldingIndexContianer from './landHoldings/landholdings_index/landhol
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
+import LandHoldingsEditContainer from './landHoldings/landholdings_edit/landholdings_edit_container';
 
 const App = () => (
   <div>
@@ -19,6 +20,7 @@ const App = () => (
 
       <ProtectedRoute path='/accounts/create' component={AccountCreateContainer} />
       <ProtectedRoute path='/landHoldings/create' component={LandHoldingCreateContianer} />
+      <ProtectedRoute path='/landHoldings/edit/:landHoldingId' component={LandHoldingsEditContainer} />
       <ProtectedRoute path='/landHoldings/' component={LandHoldingIndexContianer} />
       <ProtectedRoute path="/" component={MainPage} />
 

@@ -1,7 +1,7 @@
 import React from "react";
-import './landholdings_create.css'
+// import './landholdings_create.css'
 
-class LandHoldingCreate extends React.Component{
+class LandHoldingEdit extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -25,6 +25,25 @@ class LandHoldingCreate extends React.Component{
 
     componentDidMount(){
         this.props.fetchAllAccounts(this.props.currentUser.id);
+        this.props.fetchAllLandHoldings(this.props.currentUser.id).then(() => {
+            const { name, account, ownerId, _id, legalEntity, netMineralAcres, mineralOwnerRoyalty, sectionName, section, township, range, titleSource} = this.props.landHolding
+            this.setState({
+                name: name,
+                account: account,
+                ownerId: ownerId,
+                legalEntity: legalEntity,
+                netMineralAcres: netMineralAcres.toString(),
+                mineralOwnerRoyalty: mineralOwnerRoyalty.toString(),
+                sectionName: sectionName,
+                section: section,
+                township: township,
+                range: range,
+                titleSource: titleSource,
+                _id: _id
+            })
+        
+        })
+        
     }
 
     update(field){
@@ -42,19 +61,21 @@ class LandHoldingCreate extends React.Component{
         this.setState({account: this.props.accounts[e.target.value]._id}) 
     }
 
+
     submitHandler(e){
-        console.log('hi')
         e.preventDefault()
 
-        this.props.createLandHolding(this.state).then(()=> {
-            let newAccount = this.state.accountObject;
-            newAccount.numLandHoldings = (parseInt(newAccount.numLandHoldings) + 1).toString()
-            this.props.updateAccount(newAccount).then(()=> this.props.history.push('/accounts'))
-        })
+        this.props.editLandHolding(this.state).then(()=> this.props.history.push('/accounts'))
+        
 
     }
 
     render(){
+        if (!this.props.landHolding){
+            return null;
+        }
+
+
         return(
             <div>
                 <form id='landholding-create'>
@@ -94,18 +115,18 @@ class LandHoldingCreate extends React.Component{
                         <input type='text' placeholder='Range' minLength='4' maxLength='4' onChange={this.update('range')} value={this.state.range}/>
                     </label>
 
-                    <select id='title-source' onChange={this.update('titleSource')}>
+                    <select id='title-source' value={this.state.titleSource} onChange={this.update('titleSource')}>
                         <option defaultValue>Please select a Title Source</option>
                         <option>Class A</option>
                         <option>Class B</option>
                         <option>Class C</option>
                         <option>Class D</option>
                     </select>
-                    <button onClick={this.submitHandler}>Create LandHolding</button>
+                    <button onClick={this.submitHandler}>Edit LandHolding</button>
                 </form>
             </div>
         )
     }
 }
 
-export default LandHoldingCreate
+export default LandHoldingEdit

@@ -30,6 +30,10 @@ export const createLandHolding = landholding => dispatch => {
     return LandHoldingAPI.createLandHolding(landholding).then( landholding => dispatch( getLandHolding(landholding) ) )
 }
 
+export const editLandHolding = landholding => dispatch => {
+    return LandHoldingAPI.editLandHolding(landholding).then( landholding => dispatch( getLandHolding(landholding) ) )
+}
+
 export const deleteLandHolding = landholdingId => dispatch => {
     return LandHoldingAPI.deleteLandHolding(landholdingId).then( () => dispatch( removeLandHolding(landholdingId) ) )
 }
