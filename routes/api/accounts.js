@@ -10,8 +10,7 @@ const validateAccountInput = require('../../validation/account')
 router.get('/:userId/find', (req, res) => {
     Account.find()
         .then(accounts => {
-            let filteredAccounts = accounts.filter(account => account.ownerId === req.params.userId)
-            console.log(filteredAccounts)
+            let filteredAccounts = accounts.filter(account => account.ownerId.toString() === req.params.userId.toString())
             res.json(filteredAccounts)
         })
         .catch( err => res.status(404).json({ noAccountsFound: 'No Accounts found' }))

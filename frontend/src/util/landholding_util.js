@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const fetchAllLandHoldings = () => {
-    return axios.get('/api/landholdings')
+export const fetchAllLandHoldings = ownerId => {
+    return axios.get(`/api/landholdings/${ownerId}/find`)
 }
 
 export const fetchLandHolding = (landHoldingId) => {

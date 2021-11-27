@@ -22,14 +22,15 @@ class AccountIndex extends React.Component{
                 {this.props.accounts.map((account,i) => (
                     <div key={i}>
                         <div className='account-info'>
-                            <h3>{account.name}</h3>
+                            <h3>Name: {account.name}</h3>
                             <p>Entity Type: {account.entityType}</p>
                             <p>Owner Type: {account.ownerType}</p>
                             <p>Address: {account.address}</p>
                             <p>Number of Land Holdings: {account.numLandHoldings}</p>
                         </div>
-                        <div className='landholding'>
-                            
+                        <div className='buttons'>
+                            <i className="fas fa-edit"/>
+                            <i className="fas fa-trash-alt"/>
                         </div>
                     </div>
                 ))}

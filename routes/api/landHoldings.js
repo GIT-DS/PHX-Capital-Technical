@@ -6,9 +6,12 @@ const passport = require('passport')
 const LandHolding = require("../../models/LandHolding");
 const validateLandHoldingInput = require('../../validation/landHolding')
 
-router.get('/', (req, res) => {
+router.get('/:userId/find', (req, res) => {
     LandHolding.find()
-        .then(landHoldings => res.json(landHoldings))
+    .then(landHoldings => {
+        let filteredLandHoldings = landHoldings.filter(landholding => landholding.ownerId.toString() === req.params.userId.toString())
+        res.json(filteredLandHoldings)
+    })
         .catch( err => res.status(404).json({ noLandHoldingsFound: 'No Land Holdings found' }))
 });
 

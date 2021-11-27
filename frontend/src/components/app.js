@@ -4,6 +4,7 @@ import { Switch } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
 import AccountCreateContainer from './accounts/account_create/account_create_container';
 import LandHoldingCreateContianer from './landHoldings/landholdings_create/landholdings_create_container.js';
+import LandHoldingIndexContianer from './landHoldings/landholdings_index/landholdings_index_container'
 
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
@@ -18,6 +19,7 @@ const App = () => (
 
       <ProtectedRoute path='/accounts/create' component={AccountCreateContainer} />
       <ProtectedRoute path='/landHoldings/create' component={LandHoldingCreateContianer} />
+      <ProtectedRoute path='/landHoldings/' component={LandHoldingIndexContianer} />
       <ProtectedRoute path="/" component={MainPage} />
 
     </Switch>
