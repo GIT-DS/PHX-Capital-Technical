@@ -9,7 +9,8 @@ class AccountCreate extends React.Component{
             entityType: "",
             ownerType: "",
             address: "",
-            ownerId: this.props.currentUser,
+            ownerId: this.props.currentUser.id,
+            numLandHoldings: "0"
         }
         this.submitHandler = this.submitHandler.bind(this)
         this.update = this.update.bind(this)
@@ -21,6 +22,7 @@ class AccountCreate extends React.Component{
 
     submitHandler(e){
         e.preventDefault()
+        console.log(this.state)
         this.props.createAccount(this.state)
     }
 
@@ -44,7 +46,7 @@ class AccountCreate extends React.Component{
                         <option>Professional</option>
                     </select>
                     <input type='text' placeholder='Address' onChange={this.update('address')}/>
-                    <button onClick={()=> this.submitHandler}>Create Account</button>
+                    <button onClick={this.submitHandler}>Create Account</button>
                 </form>
             </div>
         )

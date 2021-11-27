@@ -12,7 +12,7 @@ export const createAccount = account => {
     return axios.post('/api/accounts/create', account)
 }
 
-export const editAccount = account => {
+export const updateAccount = account => {
     return axios.patch(`api/accounts/update/${account.id}`, account)
 }
 

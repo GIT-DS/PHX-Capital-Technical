@@ -18,8 +18,8 @@ export const removeAccount = accountId => ({
     type: REMOVE_ACCOUNT,
     accountId
 })
-export const fetchAllAccounts = () => dispatch => {
-    return AccountAPI.fetchAllAccounts().then( accounts => dispatch( getAllAccounts(accounts) ) )
+export const fetchAllAccounts = userId => dispatch => {
+    return AccountAPI.fetchAllAccounts(userId).then( accounts => dispatch( getAllAccounts(accounts) ) )
 }
 
 export const fetchAccount = accountId => dispatch => {
@@ -28,6 +28,10 @@ export const fetchAccount = accountId => dispatch => {
 
 export const createAccount = account => dispatch => {
     return AccountAPI.createAccount(account).then( account => dispatch( getAccount(account) ) )
+}
+
+export const updateAccount = account => dispatch => {
+    return AccountAPI.updateAccount(account).then( account => dispatch( getAccount(account) ) )
 }
 
 export const deleteAccount = accountId => dispatch => {

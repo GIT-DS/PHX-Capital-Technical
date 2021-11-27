@@ -4,7 +4,7 @@ import { fetchAllAccounts } from "../../actions/account_actions";
 
 const mSTP = (state, ownProps) => ({
     accounts: state.accounts,
-    currentUser: state.session.user
+    currentUserId: state.session.user.id
 })
 
 const mDTP = dispatch => ({

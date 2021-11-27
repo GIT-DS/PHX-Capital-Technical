@@ -7,7 +7,7 @@ const accounts = (state = [], action) => {
       case RECEIVE_ACCOUNTS:
         return action.accounts.data;
       case RECEIVE_ACCOUNT:
-          newState.push(action.accounts.data)
+          newState.push(action.account.data)
           return newState 
       case REMOVE_ACCOUNT:
         newState = [...state];
