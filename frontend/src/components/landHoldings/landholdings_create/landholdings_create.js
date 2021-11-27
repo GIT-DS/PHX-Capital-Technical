@@ -37,19 +37,17 @@ class LandHoldingCreate extends React.Component{
 
     updateAccount(e){
         e.preventDefault();
-        console.log(this.props.accounts[e.target.value]._id)
         this.setState({accountObject: this.props.accounts[e.target.value]})
         this.setState({account: this.props.accounts[e.target.value]._id}) 
     }
 
     submitHandler(e){
-        console.log('hi')
         e.preventDefault()
 
         this.props.createLandHolding(this.state).then(()=> {
             let newAccount = this.state.accountObject;
             newAccount.numLandHoldings = (parseInt(newAccount.numLandHoldings) + 1).toString()
-            this.props.updateAccount(newAccount).then(()=> this.props.history.push('/accounts'))
+            this.props.updateAccount(newAccount).then(()=> this.props.history.push('/landholdings'))
         })
 
     }

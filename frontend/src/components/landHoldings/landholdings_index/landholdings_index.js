@@ -9,17 +9,21 @@ class LandHoldingIndex extends React.Component{
 
     componentDidMount(){
         this.props.fetchAllLandHoldings(this.props.currentUserId)
+        this.props.fetchAllAccounts(this.props.currentUserId)
     }
 
-    deleteClickHandler(e, landHoldingId){
-        this.props.deleteLandHolding(landHoldingId)
+    deleteClickHandler(e, landHolding){
+        let newAccount = this.props.accounts.filter(account => account._id === landHolding.account)[0]
+        newAccount.numLandHoldings = (parseInt(newAccount.numLandHoldings) - 1).toString()
+        this.props.updateAccount(newAccount)
+        .then(() => 
+        this.props.deleteLandHolding(landHolding._id)
+        )
     }
 
     render(){
 
-
         if (this.props.landHoldings.length > 0){
-            console.log(this.props)
             return <div>
                 {this.props.landHoldings.map((landHolding,i) => (
                     <div key={i}>
@@ -36,7 +40,7 @@ class LandHoldingIndex extends React.Component{
                         </div>
                         <div className='buttons'>
                             <Link to={`/landholdings/edit/${landHolding._id}`}><i className="fas fa-edit" /></Link>
-                            <i className="fas fa-trash-alt" onClick={e => this.deleteClickHandler(landHolding._id)}/>
+                            <i className="fas fa-trash-alt" onClick={e => this.deleteClickHandler(e, landHolding)}/>
                         </div>
                     </div>
                 ))}

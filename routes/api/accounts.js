@@ -49,7 +49,7 @@ router.post('/create',
                     ownerType: req.body.ownerType,
                     ownerId: req.body.ownerId,
                     address: req.body.address,
-                    numLandHoldings: req.body.numLandHoldings
+                    numLandHoldings: req.body.numLandHoldings,
                 });
         
                 newAccount.save().then( account => res.json(account))
@@ -97,7 +97,7 @@ router.delete('/delete/:id',
             .json({ cannotdelete: 'You can only delete your own accounts' });
         } else {
             
-            Account.deleteOne({ _id: req.params.id }).then(()=>LandHolding.delete({account: acc}))
+            Account.deleteOne({ _id: req.params.id }).then(()=>LandHolding.find().forEach(landholding => landholding.delete({account: acc})))
             .then(() => {
             return res.status(200).json({ success: "Account and it's associated Land Holdings deleted" });
             });

@@ -1,16 +1,18 @@
 import { connect } from "react-redux";
 import LandHoldingIndex from './landholdings_index';
-import { fetchAllLandHoldings, editLandHolding, deleteLandHolding } from "../../../actions/landholdings_actions"
-
+import { fetchAllLandHoldings, deleteLandHolding } from "../../../actions/landholdings_actions"
+import {updateAccount, fetchAllAccounts} from "../../../actions/account_actions"
 const mSTP = (state, ownProps) => ({
     landHoldings: state.landHoldings,
-    currentUserId: state.session.user.id
+    currentUserId: state.session.user.id,
+    accounts: state.accounts
 })
 
 const mDTP = dispatch => ({
     fetchAllLandHoldings: userId => dispatch(fetchAllLandHoldings(userId)),
-    // editLandHolding: landholding => dispatch(editLandHolding(landholding)),
-    deleteLandHolding: landHoldingId => dispatch(deleteLandHolding(landHoldingId))
+    fetchAllAccounts: userId => dispatch(fetchAllAccounts(userId)),
+    deleteLandHolding: landHoldingId => dispatch(deleteLandHolding(landHoldingId)),
+    updateAccount: account => dispatch(updateAccount(account))
     
 
 })

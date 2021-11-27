@@ -107,7 +107,7 @@ router.delete('/delete/:id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         LandHolding.findById(req.params.id).then((landHolding) => {
-        if (landHolding.id != req.landHolding.id) {
+        if (landHolding._id != req.params.id) {
             return res
             .status(400)
             .json({ cannotdelete: 'You can only delete your own land holdings' });
