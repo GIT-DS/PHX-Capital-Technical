@@ -1,0 +1,13 @@
+#landholding-create{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}  
+
+label{
+    display: flex;
+    justify-content: space-between;
+}
+#mineral-owner-royalty{
+    display: flex;
+}

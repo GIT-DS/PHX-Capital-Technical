@@ -5,9 +5,9 @@ const landHoldings = (state = [], action) => {
     let newState = [];
     switch (action.type) {
       case RECEIVE_LANDHOLDINGS:
-        return action.accounts.data;
+        return action.landholdings.data;
       case RECEIVE_LANDHOLDING:
-          newState.push(action.accounts.data)
+          newState.push(action.landholding.data)
           return newState 
       case REMOVE_LANDHOLDING:
         newState = [...state];

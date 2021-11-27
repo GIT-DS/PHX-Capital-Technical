@@ -7,9 +7,13 @@ const Account = require('../../models/Account');
 const LandHolding = require("../../models/LandHolding");
 const validateAccountInput = require('../../validation/account')
 
-router.get('/', (req, res) => {
+router.get('/:userId/find', (req, res) => {
     Account.find()
-        .then(accounts => res.json(accounts))
+        .then(accounts => {
+            let filteredAccounts = accounts.filter(account => account.ownerId === req.params.userId)
+            console.log(filteredAccounts)
+            res.json(filteredAccounts)
+        })
         .catch( err => res.status(404).json({ noAccountsFound: 'No Accounts found' }))
 });
 
@@ -19,7 +23,9 @@ router.get('/:id', (req, res) => {
             name: account.name,
             entityType: account.entityType,
             ownerType: account.ownerType,
-            address: account.address
+            ownerId: account.ownerId,
+            address: account.address,
+            numLandHoldings: account.numLandHoldings
         }
         return acc;
     })
@@ -42,7 +48,9 @@ router.post('/create',
                     name: req.body.name,
                     entityType: req.body.entityType,
                     ownerType: req.body.ownerType,
-                    address: req.body.address
+                    ownerId: req.body.ownerId,
+                    address: req.body.address,
+                    numLandHoldings: req.body.numLandHoldings
                 });
         
                 newAccount.save().then( account => res.json(account))
@@ -69,8 +77,10 @@ router.patch('/update/:id',
                 account.entityType = req.body.entityType;
                 account.ownerType = req.body.ownerType;
                 account.address = req.body.address;
+                account.ownerId = req.body.ownerId;
+                account.numLandHoldings = req.body.numLandHoldings
         
-                newAccount.save().then( account => res.json(account))
+                account.save().then( account => res.json(account))
             }
 
         })

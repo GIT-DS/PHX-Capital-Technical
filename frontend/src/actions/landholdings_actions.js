@@ -4,32 +4,32 @@ export const RECEIVE_LANDHOLDING = "RECEIVE_LANDHOLDING"
 export const REMOVE_LANDHOLDING = "REMOVE_LANDHOLDING"
 
 
-export const getAllLandHoldings = accounts => ({
+export const getAllLandHoldings = landholdings => ({
     type: RECEIVE_LANDHOLDINGS,
-    accounts
+    landholdings
 })
 
-export const getLandHolding = account => ({
+export const getLandHolding = landholding => ({
     type: RECEIVE_LANDHOLDING,
-    account
+    landholding
 })
 
-export const removeLandHolding = accountId => ({
+export const removeLandHolding = landholdingId => ({
     type: REMOVE_LANDHOLDING,
-    accountId
+    landholdingId
 })
-export const fetchAllLandHoldings = () => dispatch => {
-    return LandHoldingAPI.fetchAllLandHoldings().then( accounts => dispatch( getAllLandHoldings(accounts) ) )
+export const fetchAllLandHoldings = accountId => dispatch => {
+    return LandHoldingAPI.fetchAllLandHoldings(accountId).then( landholdings => dispatch( getAllLandHoldings(landholdings) ) )
 }
 
-export const fetchLandHolding = accountId => dispatch => {
-    return LandHoldingAPI.fetchLandHolding(accountId).then( account => dispatch( getLandHolding(account) ) )
+export const fetchLandHolding = landholdingId => dispatch => {
+    return LandHoldingAPI.fetchLandHolding(landholdingId).then( landholding => dispatch( getLandHolding(landholding) ) )
 }
 
-export const createLandHolding = account => dispatch => {
-    return LandHoldingAPI.createLandHolding(account).then( account => dispatch( getLandHolding(account) ) )
+export const createLandHolding = landholding => dispatch => {
+    return LandHoldingAPI.createLandHolding(landholding).then( landholding => dispatch( getLandHolding(landholding) ) )
 }
 
-export const deleteLandHolding = accountId => dispatch => {
-    return LandHoldingAPI.deleteLandHolding(accountId).then( () => dispatch( removeLandHolding(accountId) ) )
+export const deleteLandHolding = landholdingId => dispatch => {
+    return LandHoldingAPI.deleteLandHolding(landholdingId).then( () => dispatch( removeLandHolding(landholdingId) ) )
 }

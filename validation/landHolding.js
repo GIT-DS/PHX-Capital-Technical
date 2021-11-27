@@ -1,6 +1,6 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
-const validInt = require('./valid-number')
+const validInt = require('./valid-int')
 const validFloat = require('./valid-float')
 
 module.exports = function validateAccountInput(data) {
@@ -8,9 +8,10 @@ module.exports = function validateAccountInput(data) {
 
   data.name = validText(data.name) ? data.name : '';
   data.account = validText(data.account) ? data.account : '';
+  data.ownerId = validText(data.ownerId) ? data.ownerId : '';
   data.legalEntity = validText(data.legalEntity) ? data.legalEntity : '';
-  data.netMineralAcres = validInt(data.netMineralAcres) ? data.netMineralAcres : '';
-  data.mineralOwnerRoyalty = validInt(data.mineralOwnerRoyalty) ? data.mineralOwnerRoyalty: '';
+  // data.netMineralAcres = validInt(data.netMineralAcres) ? data.netMineralAcres : '';
+  // data.mineralOwnerRoyalty = validInt(data.mineralOwnerRoyalty) ? data.mineralOwnerRoyalty: '';
   data.sectionName = validText(data.sectionName) ? data.sectionName : '';
   data.section = validText(data.section) ? data.section : '';
   data.township = validText(data.township) ? data.township : '';
@@ -26,10 +27,13 @@ module.exports = function validateAccountInput(data) {
     errors.account = 'Account field is required'
   }
 
+  if (Validator.isEmpty(data.ownerId)){
+    errors.account = 'Owner field is required'
+  }
+
   if (Validator.isEmpty(data.legalEntity)) {
     errors.legalEntity = 'Legal Entity field is required';
   }
-
   if (Validator.isEmpty(data.netMineralAcres)){
     errors.netMineralAcres = 'Net Mineral Acres field is required'
   }
@@ -55,7 +59,8 @@ module.exports = function validateAccountInput(data) {
     errors.township = 'Township field is required'
   }
 
-  if (data.township.last.toUppercase() !== 'N' || data.township.last.toUppercase() !== 'S' ){
+  console.log(data.township)
+  if (data.township[data.township.length - 1] !== 'N' && data.township[data.township.length - 1] !== 'S' ){
     errors.township = "Township must end in 'N' or 'S'"
   }
   
@@ -67,7 +72,7 @@ module.exports = function validateAccountInput(data) {
     errors.range = 'Range must be 4 characters long'
   }
 
-  if (data.range.last.toUppercase() !== 'E' || data.range.last.toUppercase() !== 'W'){
+  if (data.range[data.range.length - 1] !== 'E' && data.range[data.range.length - 1] !== 'W'){
     errors.range = "Range must end in 'E' or 'W'"
   }
 

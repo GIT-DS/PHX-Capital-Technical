@@ -1,10 +1,9 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
-import { Route } from "react-router"
 import NavBarContainer from './nav/navbar_container';
 import AccountCreateContainer from './accounts/account_create/account_create_container';
-import LandHoldingCreateContianer from './landHoldings/land_holdings_container';
+import LandHoldingCreateContianer from './landHoldings/landholdings_create/landholdings_create_container.js';
 
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';

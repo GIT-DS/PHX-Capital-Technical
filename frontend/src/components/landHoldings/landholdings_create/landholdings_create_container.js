@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import LandHoldingCreate from "./land_holdings"
-import { createLandHolding } from "../../actions/landholdings_actions";
-import { fetchAllAccounts, updateAccount } from "../../actions/account_actions"
+import LandHoldingCreate from "./landholdings_create"
+import { createLandHolding } from "../../../actions/landholdings_actions";
+import { fetchAllAccounts, updateAccount } from "../../../actions/account_actions"
 
 const mSTP = (state, ownProps) => ({
     currentUser: state.session.user,
@@ -9,7 +9,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = dispatch => ({
-    fetchAllAccounts: account => dispatch(()=> dispatch(fetchAllAccounts())),
+    fetchAllAccounts: userId => dispatch(fetchAllAccounts(userId)),
     updateAccount: account => dispatch(updateAccount(account)),
     createLandHolding: landHolding => dispatch(createLandHolding(landHolding))
 })

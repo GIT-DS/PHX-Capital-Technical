@@ -1,11 +1,11 @@
 import  axios from 'axios'
 
-export const fetchAllAccounts = () => {
-    return axios.get('/api/accounts')
+export const fetchAllAccounts = userId => {
+    return axios.get(`/api/accounts/${userId}/find`)
 }
 
 export const fetchAccount = accountId => {
-    return axios.get(`/api/accounts/accountId`)
+    return axios.get(`/api/accounts/${accountId}`)
 }
 
 export const createAccount = account => {
@@ -13,7 +13,7 @@ export const createAccount = account => {
 }
 
 export const updateAccount = account => {
-    return axios.patch(`api/accounts/update/${account.id}`, account)
+    return axios.patch(`api/accounts/update/${account._id}`, account)
 }
 
 export const deleteAccount = accountId => {

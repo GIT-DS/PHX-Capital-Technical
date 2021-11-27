@@ -8,7 +8,7 @@ const validateLandHoldingInput = require('../../validation/landHolding')
 
 router.get('/', (req, res) => {
     LandHolding.find()
-        .then(landHoldings => res.json(accounts))
+        .then(landHoldings => res.json(landHoldings))
         .catch( err => res.status(404).json({ noLandHoldingsFound: 'No Land Holdings found' }))
 });
 
@@ -17,6 +17,7 @@ router.get('/:id', (req, res) => {
         let land = {
             name: landHolding.name,
             account: landHolding.account,
+            ownerId: req.body.ownerId,
             legalEntity: landHolding.legalEntity,
             netMineralAcres: landHolding.netMineralAcres,
             mineralOwnerRoyalty: landHolding.mineralOwnerRoyalty,
@@ -35,6 +36,7 @@ router.post('/create',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const {errors, isValid} = validateLandHoldingInput(req.body);
+        console.log(req.body.mineralOwnerRoyalty)
         if (!isValid){
             return res.status(400).json(errors)
         }
@@ -47,6 +49,7 @@ router.post('/create',
                 const newLandHolding = new LandHolding({
                     name: req.body.name,
                     account: req.body.account,
+                    ownerId: req.body.ownerId,
                     legalEntity: req.body.legalEntity,
                     netMineralAcres: req.body.netMineralAcres,
                     mineralOwnerRoyalty: req.body.mineralOwnerRoyalty,
@@ -79,6 +82,7 @@ router.patch('/update/:id',
             } else {
                 landHolding.name = req.body.name;
                 landHolding.account = req.body.account;
+                landHolding.ownerId = req.body.ownerId;
                 landHolding.legalEntity = req.body.legalEntity;
                 landHolding.netMineralAcres = req.body.netMineralAcres;
                 landHolding.mineralOwnerRoyalty = req.body.mineralOwnerRoyalty;

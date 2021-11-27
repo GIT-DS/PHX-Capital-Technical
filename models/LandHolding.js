@@ -3,12 +3,16 @@ const Schema = mongoose.Schema;
 
 const LandHoldingSchema = new Schema({
   name: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'users'
   },
   account: {
     type: Schema.Types.ObjectId,
     ref: 'accounts'
+  },
+  ownerId: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   },
   legalEntity: {
     type: String,

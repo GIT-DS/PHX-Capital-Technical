@@ -8,7 +8,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = dispatch => ({
-    fetchAllAccounts: () => dispatch(fetchAllAccounts)
+    fetchAllAccounts: userId => dispatch(fetchAllAccounts(userId))
 })
 
 export default connect(mSTP, mDTP)(AccountIndex)
