@@ -16,8 +16,9 @@ router.get('/:userId/find', (req, res) => {
         .catch( err => res.status(404).json({ noAccountsFound: 'No Accounts found' }))
 });
 
-router.get('/:id', (req, res) => {
-    Account.findById(req.params.id).then(account => {
+router.get('/:accountId', (req, res) => {
+    Account.findById(req.params.accountId).then(account => {
+        if (account){
         let acc = {
             name: account.name,
             entityType: account.entityType,
@@ -27,7 +28,7 @@ router.get('/:id', (req, res) => {
             numLandHoldings: account.numLandHoldings
         }
         return acc;
-    })
+    }})
 })
 
 router.post('/create', 

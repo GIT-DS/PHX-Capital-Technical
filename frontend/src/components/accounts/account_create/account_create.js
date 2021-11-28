@@ -21,7 +21,6 @@ class AccountCreate extends React.Component{
 
     submitHandler(e){
         e.preventDefault()
-        console.log(this.state)
         this.props.createAccount(this.state)
     }
 

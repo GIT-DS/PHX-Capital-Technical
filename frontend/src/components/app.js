@@ -10,7 +10,8 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import LandHoldingsEditContainer from './landHoldings/landholdings_edit/landholdings_edit_container';
-
+import AccountEditContainer from './accounts/account_edit/account_edit_container'
+import AccountIndexContainer from './accounts/account_index/accounts_index_container'
 const App = () => (
   <div>
     <NavBarContainer />
@@ -19,6 +20,8 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
       <ProtectedRoute path='/accounts/create' component={AccountCreateContainer} />
+      <ProtectedRoute path='/accounts/edit/:accountId' component={AccountEditContainer}/>
+      <ProtectedRoute path='/accounts/' component={AccountIndexContainer}/>
       <ProtectedRoute path='/landHoldings/create' component={LandHoldingCreateContianer} />
       <ProtectedRoute path='/landHoldings/edit/:landHoldingId' component={LandHoldingsEditContainer} />
       <ProtectedRoute path='/landHoldings/' component={LandHoldingIndexContianer} />

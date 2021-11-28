@@ -59,7 +59,6 @@ module.exports = function validateAccountInput(data) {
     errors.township = 'Township field is required'
   }
 
-  console.log(data.township)
   if (data.township[data.township.length - 1] !== 'N' && data.township[data.township.length - 1] !== 'S' ){
     errors.township = "Township must end in 'N' or 'S'"
   }

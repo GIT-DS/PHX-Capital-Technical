@@ -1,5 +1,5 @@
 import React from 'react';
-import AccountsIndexContainer from '../accounts/accounts_index_container';
+import AccountsIndexContainer from '../accounts/account_index/accounts_index_container';
 
 class MainPage extends React.Component {
 

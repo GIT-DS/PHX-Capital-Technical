@@ -56,7 +56,6 @@ class LandHoldingEdit extends React.Component{
 
     updateAccount(e){
         e.preventDefault();
-        console.log(this.props.accounts[e.target.value]._id)
         this.setState({accountObject: this.props.accounts[e.target.value]})
         this.setState({account: this.props.accounts[e.target.value]._id}) 
     }

@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 class AccountIndex extends React.Component{
-    constructor(props){
-        super(props)
-    }
+
 
     componentDidMount(){
         // console.log(this.props.currentUser)
@@ -29,7 +27,7 @@ class AccountIndex extends React.Component{
                             <p>Number of Land Holdings: {account.numLandHoldings}</p>
                         </div>
                         <div className='buttons'>
-                            <i className="fas fa-edit"/>
+                            <Link to={`/accounts/edit/${account._id}`}><i className="fas fa-edit"/></Link>
                             <i className="fas fa-trash-alt"/>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import AccountIndex from './account_index';
-import { fetchAllAccounts } from "../../actions/account_actions";
+import { fetchAllAccounts } from "../../../actions/account_actions";
 
 const mSTP = (state, ownProps) => ({
     accounts: state.accounts,
