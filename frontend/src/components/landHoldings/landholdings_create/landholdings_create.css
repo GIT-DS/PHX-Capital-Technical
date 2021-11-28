@@ -1,13 +1,19 @@
-#landholding-create{
+#landholding-form{
     display: flex;
     flex-direction: column;
     width: 500px;
 }  
 
-label{
+#landholding-form label{
     display: flex;
     justify-content: space-between;
 }
+
+#landholding-form input, select{
+    width: 50%;
+}
+
 #mineral-owner-royalty{
     display: flex;
 }
+

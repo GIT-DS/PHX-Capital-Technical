@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import LandHoldingBox from "./landholdings_box";
+import './landholdings.css'
 
 class LandHoldingIndex extends React.Component{
     constructor(props){
@@ -24,25 +26,9 @@ class LandHoldingIndex extends React.Component{
     render(){
 
         if (this.props.landHoldings.length > 0){
-            return <div>
+            return <div id='landholding-index'>
                 {this.props.landHoldings.map((landHolding,i) => (
-                    <div key={i}>
-                        <div className='landholding-info'>
-                            <h3>Name: {landHolding.name}</h3>
-                            <p>Legal Entity: {landHolding.legalEntity}</p>
-                            <p>Net Mineral Acres: {landHolding.netMineralAcres}</p>
-                            <p>Mineral Owner Royalty: {landHolding.mineralOwnerRoyalty}%</p>
-                            <p>Section Name: {landHolding.sectionName}</p>
-                            <p>Section: {landHolding.section}</p>
-                            <p>Township: {landHolding.township}</p>
-                            <p>Range: {landHolding.range}</p>
-                            <p>Title Source: {landHolding.titleSource}</p>
-                        </div>
-                        <div className='buttons'>
-                            <Link to={`/landholdings/edit/${landHolding._id}`}><i className="fas fa-edit" /></Link>
-                            <i className="fas fa-trash-alt" onClick={e => this.deleteClickHandler(e, landHolding)}/>
-                        </div>
-                    </div>
+                    <LandHoldingBox key={i} landHolding={landHolding} deleteAccount={this.props.deleteAccount}/>
                 ))}
             </div>
         } else {

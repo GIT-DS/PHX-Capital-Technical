@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import AccountBox from "./account_box";
+import './account_index.css'
 
 class AccountIndex extends React.Component{
     constructor(props){
@@ -8,7 +10,6 @@ class AccountIndex extends React.Component{
     }
 
     deleteClickHandler(e, account){
-        console.log(account)
         e.preventDefault();
         this.props.landHoldings.forEach(landHolding => {
             if(landHolding.account === account._id) 
@@ -30,19 +31,7 @@ class AccountIndex extends React.Component{
         if (this.props.accounts.length > 0){
             return <div>
                 {this.props.accounts.map((account,i) => (
-                    <div key={i}>
-                        <div className='account-info'>
-                            <h3>Name: {account.name}</h3>
-                            <p>Entity Type: {account.entityType}</p>
-                            <p>Owner Type: {account.ownerType}</p>
-                            <p>Address: {account.address}</p>
-                            <p>Number of Land Holdings: {account.numLandHoldings}</p>
-                        </div>
-                        <div className='buttons'>
-                            <Link to={`/accounts/edit/${account._id}`}><i className="fas fa-edit"/></Link>
-                            <i className="fas fa-trash-alt" onClick={e => this.deleteClickHandler(e, account)}/>
-                        </div>
-                    </div>
+                    <AccountBox key={i} account={account} deleteClickHandler={this.deleteClickHandler}/>
                 ))}
             </div>
         } else {

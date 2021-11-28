@@ -1,0 +1,13 @@
+#account-form{
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    width: 300px;
+}
+#account-form label{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#account-form input, select{
+    width: 50%;
+}

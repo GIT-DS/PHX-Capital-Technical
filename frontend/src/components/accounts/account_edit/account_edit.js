@@ -47,8 +47,8 @@ class AccountEdit extends React.Component{
         }
 
         return(
-            <div>
-                <form id='account-create'>
+            <div id='account-form-container'>
+                <form id='account-form'>
                     <label>Name: 
                         <input type='text' placeholder='Name' value={this.state.name} onChange={this.update('name')}/>
 

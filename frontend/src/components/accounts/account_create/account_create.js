@@ -1,4 +1,5 @@
 import React from "react";
+import './account_create.css'
 
 class AccountCreate extends React.Component{
     constructor(props){
@@ -26,11 +27,10 @@ class AccountCreate extends React.Component{
 
     render(){
         return(
-            <div>
-                <form id='account-create'>
+            <div id='account-form-container'>
+                <form id='account-form'>
                     <label>Name: 
                             <input type='text' placeholder='Name' value={this.state.name} onChange={this.update('name')}/>
-
                     </label>
                     <label>Entity Type:
                         <select id='entity-type' value={this.state.entityType} onChange={this.update('entityType')}>

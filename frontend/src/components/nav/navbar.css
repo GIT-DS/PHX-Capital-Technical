@@ -1,21 +1,22 @@
-.NavBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.nav-links a, #logout-button{
+    font-weight: bold;
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #d6a317;
+    color: white;
 }
 
-.NavBar button {
-    height: 20px;
+#logout-button{
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
 }
-
-.Links1 {
-    width: 100px;
+.nav-links{
     display: flex;
-    justify-content: space-between;
-}
-
-.Links2 {
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }

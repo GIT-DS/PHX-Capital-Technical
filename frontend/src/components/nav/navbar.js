@@ -16,26 +16,29 @@ class NavBar extends React.Component {
 
   getLinks() {
       if (this.props.loggedIn) {
+        const { pathname } = this.props.location
         return (
-            <div>
-                <Link to={'/accounts'}>Accounts</Link>
-                <Link to={'/accounts/create'}>Create an Account</Link>
-                <Link to={'/landholdings'}>Land Holdings</Link>
-                <Link to={'/landholdings/create'}>Create a Land Holding</Link>
-                <button onClick={this.logoutUser}>Logout</button>
+            <div className='nav-links'>
+                {pathname === "/accounts" ? "" : <Link to={'/accounts'}>Accounts</Link>}
+                {pathname === "/accounts/create" ? "" : <Link to={'/accounts/create'}>Create an Account</Link>}
+                {pathname === "/landholdings" ? "" : <Link to={'/landholdings'}>Land Holdings</Link>}
+                {pathname === "landholdings/create" ? "" : <Link to={'/landholdings/create'}>Create a Land Holding</Link>}
+                <div id='logout-button' onClick={this.logoutUser}>Logout</div>
             </div>
         );
       } else {
+        const { pathname } = this.props.location
         return (
-            <div>
-                <Link to={'/signup'}>Signup</Link>
-                <Link to={'/login'}>Login</Link>
+            <div className='nav-links'>
+                {pathname === "signup" ? "" : <Link to={'/signup'}>Signup</Link>}
+                {pathname === "login" ? "" : <Link to={'/login'}>Login</Link>}
             </div>
         );
       }
   }
 
   render() {
+    console.log(this.props)
       return (
         <div id='nav-bar'>
             <h1><Link to='/'>Pheonix Capital Group</Link></h1>

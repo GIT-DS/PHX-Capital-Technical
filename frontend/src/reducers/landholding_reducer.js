@@ -12,7 +12,7 @@ const landHoldings = (state = [], action) => {
       case REMOVE_LANDHOLDING:
         newState = [...state];
         for (let i = 0; i < newState.length; i++){
-          if (newState[i].id === action.recipeId) {
+          if (newState[i].id === action.landholdingId) {
             delete newState[i];
           }
         }

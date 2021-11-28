@@ -77,7 +77,7 @@ class LandHoldingEdit extends React.Component{
 
         return(
             <div>
-                <form id='landholding-create'>
+                <form id='landholding-form'>
                     <label>Name
                         <input type='text' placeholder='Name' value={this.state.name} onChange={this.update('name')}/>
                     </label>
@@ -98,11 +98,8 @@ class LandHoldingEdit extends React.Component{
                         <input type='number' placeholder='Net Mineral Acres' min='0' onChange={this.update('netMineralAcres')} value={this.state.netMineralAcres}/>
                     </label>
                     
-                    <label>Mineral Owner Royalty
-                        <div id='mineral-owner-royalty'>
-                            <input type='number' placeholder='Mineral Owner Royalty' min='0' max='100' onChange={this.update('mineralOwnerRoyalty')} value={this.state.mineralOwnerRoyalty}/>
-                            <p>%</p>
-                        </div>
+                    <label>Mineral Owner Royalty (%)
+                        <input type='number' placeholder='Mineral Owner Royalty' min='0' max='100' onChange={this.update('mineralOwnerRoyalty')} value={this.state.mineralOwnerRoyalty}/>
                     </label>
                     <label>Section (3 characters)
                         <input type='text' placeholder='Section' minLength='3' maxLength='3' onChange={this.update('section')} value={this.state.section}/>
