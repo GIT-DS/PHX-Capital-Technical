@@ -2,12 +2,24 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 class AccountIndex extends React.Component{
+    constructor(props){
+        super(props)
+        this.deleteClickHandler = this.deleteClickHandler.bind(this)
+    }
 
+    deleteClickHandler(e, account){
+        console.log(account)
+        e.preventDefault();
+        this.props.landHoldings.forEach(landHolding => {
+            if(landHolding.account === account._id) 
+                this.props.deleteLandHolding(landHolding._id)
+            })
+        this.props.deleteAccount(account._id)
+    }
 
     componentDidMount(){
-        // console.log(this.props.currentUser)
         this.props.fetchAllAccounts(this.props.currentUserId)
-        // this.setState({userAccounts: this.props.accounts.filter(account => this.props.currentUser === account.ownerId)})
+        this.props.fetchAllLandHoldings(this.props.currentUserId)
     }
 
     render(){
@@ -28,7 +40,7 @@ class AccountIndex extends React.Component{
                         </div>
                         <div className='buttons'>
                             <Link to={`/accounts/edit/${account._id}`}><i className="fas fa-edit"/></Link>
-                            <i className="fas fa-trash-alt"/>
+                            <i className="fas fa-trash-alt" onClick={e => this.deleteClickHandler(e, account)}/>
                         </div>
                     </div>
                 ))}

@@ -88,17 +88,18 @@ router.patch('/update/:id',
 
 );
 
-router.delete('/delete/:id',
+router.delete('/delete/:accountId',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        let acc = Account.findById(req.params.id).then((account) => {
-        if (account.id != req.account.id) {
+        console.log(req.params)
+        let acc = Account.findById(req.params.accountId).then((account) => {
+        if (account.ownerId != req.user.id) {
             return res
             .status(400)
-            .json({ cannotdelete: 'You can only delete your own accounts' });
+            .json({ cannotDelete: 'You can only delete your own accounts' });
         } else {
             
-            Account.deleteOne({ _id: req.params.id }).then(()=>LandHolding.find().forEach(landholding => landholding.delete({account: acc})))
+            Account.deleteOne({ _id: req.params.accountId })
             .then(() => {
             return res.status(200).json({ success: "Account and it's associated Land Holdings deleted" });
             });

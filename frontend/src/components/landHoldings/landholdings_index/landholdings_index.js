@@ -47,7 +47,7 @@ class LandHoldingIndex extends React.Component{
             </div>
         } else {
             return <div>
-                <h3>No Accounts yet! <Link to='/landHoldings/create'>Create an Account</Link></h3>
+                <h3>No Land Holdings yet! <Link to='/landHoldings/create'>Create a Land Holding!</Link></h3>
             </div>
         }
     }
