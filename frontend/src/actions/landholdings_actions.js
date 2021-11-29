@@ -2,7 +2,8 @@ import * as LandHoldingAPI from '../util/landholding_util'
 export const RECEIVE_LANDHOLDINGS = "RECEIVE_LANDHOLDINGS"
 export const RECEIVE_LANDHOLDING = "RECEIVE_LANDHOLDING"
 export const REMOVE_LANDHOLDING = "REMOVE_LANDHOLDING"
-
+export const RECEIVE_LANDHOLDING_ERRORS = "RECEIVE_LANDHOLDING_ERRORS"
+export const CLEAR_LANDHOLDING_ERRORS = "CLEAR_LANDHOLDING_ERRORS"
 
 export const getAllLandHoldings = landholdings => ({
     type: RECEIVE_LANDHOLDINGS,
@@ -18,6 +19,16 @@ export const removeLandHolding = landholdingId => ({
     type: REMOVE_LANDHOLDING,
     landholdingId
 })
+
+export const receiveLandHoldingErrors = errors => ({
+    type: RECEIVE_LANDHOLDING_ERRORS,
+    errors
+})
+
+export const clearLandHoldingErrors = () => ({
+    type: CLEAR_LANDHOLDING_ERRORS
+})
+
 export const fetchAllLandHoldings = accountId => dispatch => {
     return LandHoldingAPI.fetchAllLandHoldings(accountId).then( landholdings => dispatch( getAllLandHoldings(landholdings) ) )
 }
@@ -27,11 +38,15 @@ export const fetchLandHolding = landholdingId => dispatch => {
 }
 
 export const createLandHolding = landholding => dispatch => {
-    return LandHoldingAPI.createLandHolding(landholding).then( landholding => dispatch( getLandHolding(landholding) ) )
+    return LandHoldingAPI.createLandHolding(landholding)
+    .then( landholding => dispatch( getLandHolding(landholding) ) )
+    .catch( err => dispatch(receiveLandHoldingErrors(err.response.data)))
 }
 
 export const editLandHolding = landholding => dispatch => {
-    return LandHoldingAPI.editLandHolding(landholding).then( landholding => dispatch( getLandHolding(landholding) ) )
+    return LandHoldingAPI.editLandHolding(landholding)
+    .then( landholding => dispatch( getLandHolding(landholding) ) )
+    .catch( err => dispatch(receiveLandHoldingErrors(err.response.data)))
 }
 
 export const deleteLandHolding = landholdingId => dispatch => {

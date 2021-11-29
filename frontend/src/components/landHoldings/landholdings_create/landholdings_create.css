@@ -7,7 +7,10 @@
 
 #landholding-form label{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
 }
 
 #landholding-form input{
@@ -37,4 +40,20 @@
     background-color: #0274be;
     color: white;
     font-weight: bold;
+}
+#error{
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+.input-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#error-message{
+    color: red;
+    text-align: right;
+    margin-top: 10px;
 }

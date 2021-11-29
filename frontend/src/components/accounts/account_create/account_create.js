@@ -16,6 +16,7 @@ class AccountCreate extends React.Component{
         this.update = this.update.bind(this)
         this.errorTag = this.errorTag.bind(this)
         this.errorMessage = this.errorMessage.bind(this)
+        this.props.clearAccountErrors();
     }
 
     update(field){
@@ -25,7 +26,7 @@ class AccountCreate extends React.Component{
     submitHandler(e){
         e.preventDefault()
         this.props.createAccount(this.state)
-        // .then(()=>this.props.history.push('/accounts'))
+        .then(()=>this.props.errors.length === 0 ? this.props.history.push('/accounts') : null)
     }
 
     errorTag(field){

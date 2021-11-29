@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import AccountEdit from "./account_edit"
-import { fetchAllAccounts, updateAccount } from "../../../actions/account_actions";
+import { fetchAllAccounts, updateAccount, clearAccountErrors } from "../../../actions/account_actions";
 
 const mSTP = (state, ownProps) => {
     return {
@@ -10,7 +10,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
     updateAccount: account => dispatch(updateAccount(account)),
-    fetchAllAccounts: userId => dispatch(fetchAllAccounts(userId))
+    fetchAllAccounts: userId => dispatch(fetchAllAccounts(userId)),
+    clearAccountErrors: () => dispatch(clearAccountErrors())
 })
 
 export default connect(mSTP, mDTP)(AccountEdit)

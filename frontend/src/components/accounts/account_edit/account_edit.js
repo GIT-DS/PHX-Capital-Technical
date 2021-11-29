@@ -15,6 +15,7 @@ class AccountEdit extends React.Component{
         this.update = this.update.bind(this)
         this.errorTag = this.errorTag.bind(this)
         this.errorMessage = this.errorMessage.bind(this)
+        this.props.clearAccountErrors();
     }
 
     componentDidMount(){
@@ -39,7 +40,7 @@ class AccountEdit extends React.Component{
 
     submitHandler(e){
         e.preventDefault()
-        this.props.updateAccount(this.state)
+        this.props.updateAccount(this.state).then(()=>this.props.errors.length === 0 ? this.props.history.push('/accounts') : null)
     }
 
     errorTag(field){
