@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './session.css'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -8,19 +9,18 @@ class SignupForm extends React.Component {
       email: '',
       password: '',
       password2: '',
-      errors: {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
+    this.errorTag = this.errorTag.bind(this)
+    this.errorMessage = this.errorMessage.bind(this)
+    this.props.clearSessionErrors();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
       this.props.history.push('/login');
     }
-
-    this.setState({errors: nextProps.errors})
   }
 
   update(field) {
@@ -31,53 +31,61 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let user = {
-      email: this.state.email,
-      password: this.state.password,
-      password2: this.state.password2
-    };
-
-    this.props.signup(user, this.props.history); 
+    this.props.signup(this.state)
+    .then(() => this.props.errors.length === 0 ? this.props.history.push('/accounts') : null); 
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
+  errorTag(field){
+    return Object.keys(this.props.errors).includes(field) ? "error" : ""
+    
+  }
+
+  errorMessage(field){
+    if (Object.keys(this.props.errors).includes(field)){
+        return <p id='error-message'>{this.props.errors[[field]]}</p>
+    }
   }
 
   render() {
+    console.log(this.props.errors)
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
+      <div className="session-form-container">
+        <form id='session-form' onSubmit={this.handleSubmit}>
           <div className="login-form">
-            <br/>
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email"
-              />
-            <br/>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
-              />
-            <br/>
-              <input type="password"
-                value={this.state.password2}
-                onChange={this.update('password2')}
-                placeholder="Confirm Password"
-              />
-            <br/>
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+            <label id={this.errorTag('email')}>
+              <div id='input-section'>
+                <p>Email</p>
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  placeholder="Email"
+                />
+              </div>
+              {this.errorMessage('email')}
+            </label>
+            <label id={this.errorTag('password')}>
+              <div id='input-section'>
+                <p>Password</p>
+                <input type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    placeholder="Password"
+                  />
+              </div>
+              {this.errorMessage('password')}
+            </label>
+            <label id={this.errorTag('password2')}>
+              <div id='input-section'>
+                <p>Verify Password</p>
+                <input type="password"
+                    value={this.state.password2}
+                    onChange={this.update('password2')}
+                    placeholder="Verify Password"
+                  />
+              </div>
+              {this.errorMessage('password2')}
+            </label>
+            <div id='button' onClick={this.handleSubmit}>Signup</div>
           </div>
         </form>
       </div>

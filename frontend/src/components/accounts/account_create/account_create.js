@@ -41,7 +41,6 @@ class AccountCreate extends React.Component{
     }
 
     render(){
-        console.log(this.props.errors)
         return(
             <div id='account-form-container'>
                 <form id='account-form'>

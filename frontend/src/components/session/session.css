@@ -1,0 +1,33 @@
+.session-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#session-form{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+
+}
+
+#input-section{
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    padding: 10px;
+}
+
+#input-section input{
+    width: 50%;
+}
+
+#input-section p {
+    font-weight: bold;
+}
+
+#error-message{
+    padding: 10px;
+    padding-top: 0;
+}

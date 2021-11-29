@@ -50,7 +50,8 @@ class LandHoldingCreate extends React.Component{
         this.props.createLandHolding(this.state).then(()=> {
             let newAccount = this.state.accountObject;
             newAccount.numLandHoldings = (parseInt(newAccount.numLandHoldings) + 1).toString()
-            this.props.updateAccount(newAccount).then(()=> this.props.errors.length === 0 ? this.props.history.push('/landholdings') : null)
+            this.props.updateAccount(newAccount)
+            .then(()=> this.props.errors.length === 0 ? this.props.history.push('/landholdings') : null)
         })
 
     }
@@ -67,7 +68,6 @@ class LandHoldingCreate extends React.Component{
     }
 
     render(){
-        console.log(this.props.errors)
         return(
             <div id='landholding-form-container'>
                 <form id='landholding-form'>
