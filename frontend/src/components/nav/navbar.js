@@ -23,7 +23,7 @@ class NavBar extends React.Component {
                 {pathname === "/accounts/create" ? "" : <Link to={'/accounts/create'}>Create an Account</Link>}
                 {pathname === "/landholdings" ? "" : <Link to={'/landholdings'}>Land Holdings</Link>}
                 {pathname === "landholdings/create" ? "" : <Link to={'/landholdings/create'}>Create a Land Holding</Link>}
-                <button id='logout-button' onClick={this.logoutUser}>Logout</button>
+                <div id='logout-button' onClick={this.logoutUser}>Logout</div>
             </div>
         );
       } else {
