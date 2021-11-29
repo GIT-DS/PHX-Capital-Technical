@@ -32,7 +32,9 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state)
-    .then(() => this.props.errors.length === 0 ? this.props.history.push('/accounts') : null); 
+    .then(() => this.props.errors.length === 0 ? 
+    this.props.login(this.state).then(() => this.props.history.push('/accounts'))
+    : null); 
   }
 
   errorTag(field){
