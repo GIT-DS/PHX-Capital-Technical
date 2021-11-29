@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
               </div>
               {this.errorMessage('password')}
             </label>
-            <div id='button' onClick={this.handleSubmit}>Login</div>
+            <button id='button' onClick={this.handleSubmit}>Login</button>
             
 
         </form>

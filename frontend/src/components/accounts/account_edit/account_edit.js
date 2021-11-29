@@ -104,7 +104,7 @@ class AccountEdit extends React.Component{
                         </div>
                         {this.errorMessage('address')}
                     </label>
-                    <div id='button' onClick={this.submitHandler}>Edit Account</div>
+                    <button id='button' onClick={this.submitHandler}>Edit Account</button>
                 </form>
             </div>
         )

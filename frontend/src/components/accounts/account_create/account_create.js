@@ -85,7 +85,7 @@ class AccountCreate extends React.Component{
                         </div>
                         {this.errorMessage('address')}
                     </label>
-                    <div id='button' onClick={this.submitHandler}>Create Account</div>
+                    <button id='button' onClick={this.submitHandler}>Create Account</button>
                 </form>
             </div>
         )

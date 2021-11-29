@@ -87,7 +87,7 @@ class SignupForm extends React.Component {
               </div>
               {this.errorMessage('password2')}
             </label>
-            <div id='button' onClick={this.handleSubmit}>Signup</div>
+            <button id='button' onClick={this.handleSubmit}>Signup</button>
           </div>
         </form>
       </div>

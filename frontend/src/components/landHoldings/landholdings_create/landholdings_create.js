@@ -151,7 +151,7 @@ class LandHoldingCreate extends React.Component{
                         {this.errorMessage('titleSource')}
 
                     </label>
-                    <div id='button' onClick={this.submitHandler}>Create LandHolding</div>
+                    <button id='button' onClick={this.submitHandler}>Create LandHolding</button>
                 </form>
             </div>
         )
