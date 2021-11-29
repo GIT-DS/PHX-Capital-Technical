@@ -1,6 +1,7 @@
 #landholding-index{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .landholding-box{
@@ -10,10 +11,11 @@
     flex-direction: column;
     align-items: space-between;
     justify-content: center;
-    width: 300px;
+    width: 500px;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 5px;
 }
 
 #landholding-header{
@@ -41,9 +43,6 @@
     margin-left: 10px;
 }
 
-.landholding-box{
-    padding: 10px;
-}
 
 label{
     font-weight: bold;

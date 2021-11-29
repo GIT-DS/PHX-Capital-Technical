@@ -13,7 +13,6 @@ export const createAccount = account => {
 }
 
 export const updateAccount = account => {
-    console.log(account)
     return axios.patch(`api/accounts/update/${account._id}`, account)
 }
 

@@ -54,7 +54,7 @@ class LandHoldingCreate extends React.Component{
 
     render(){
         return(
-            <div>
+            <div id='landholding-form-container'>
                 <form id='landholding-form'>
                     <label>Name
                         <input type='text' placeholder='Name' value={this.state.name} onChange={this.update('name')}/>
@@ -79,24 +79,25 @@ class LandHoldingCreate extends React.Component{
                     <label>Mineral Owner Royalty
                         <input type='number' placeholder='Mineral Owner Royalty' min='0' max='100' onChange={this.update('mineralOwnerRoyalty')} value={this.state.mineralOwnerRoyalty}/>
                     </label>
-                    <label>Section (3 characters)
+                    <label>Section
                         <input type='text' placeholder='Section' minLength='3' maxLength='3' onChange={this.update('section')} value={this.state.section}/>
                     </label>
-                    <label>Township (4 characters, must end in 'N' or 'S')
+                    <label>Township (must end in 'N' or 'S')
                         <input type='text' placeholder='Township' minLength='4' maxLength='4' onChange={this.update('township')} value={this.state.township}/>
                     </label>
-                    <label>Range (4 characters, must end in 'E' or 'W')
+                    <label>Range (must end in 'E' or 'W')
                         <input type='text' placeholder='Range' minLength='4' maxLength='4' onChange={this.update('range')} value={this.state.range}/>
                     </label>
-
-                    <select id='title-source' onChange={this.update('titleSource')}>
-                        <option defaultValue>Please select a Title Source</option>
-                        <option>Class A</option>
-                        <option>Class B</option>
-                        <option>Class C</option>
-                        <option>Class D</option>
-                    </select>
-                    <button onClick={this.submitHandler}>Create LandHolding</button>
+                    <label>Title Source 
+                        <select id='title-source' onChange={this.update('titleSource')}>
+                            <option defaultValue>Please select a Title Source</option>
+                            <option>Class A</option>
+                            <option>Class B</option>
+                            <option>Class C</option>
+                            <option>Class D</option>
+                        </select>
+                    </label>
+                    <div id='button' onClick={this.submitHandler}>Create LandHolding</div>
                 </form>
             </div>
         )

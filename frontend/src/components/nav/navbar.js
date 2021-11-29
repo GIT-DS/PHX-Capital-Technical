@@ -38,7 +38,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log(this.props)
       return (
         <div id='nav-bar'>
             <h1><Link to='/'>Pheonix Capital Group</Link></h1>

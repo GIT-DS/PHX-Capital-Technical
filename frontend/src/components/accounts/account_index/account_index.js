@@ -29,7 +29,7 @@ class AccountIndex extends React.Component{
         }
 
         if (this.props.accounts.length > 0){
-            return <div>
+            return <div id='account-index'>
                 {this.props.accounts.map((account,i) => (
                     <AccountBox key={i} account={account} deleteClickHandler={this.deleteClickHandler}/>
                 ))}

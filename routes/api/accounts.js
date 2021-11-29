@@ -91,7 +91,6 @@ router.patch('/update/:id',
 router.delete('/delete/:accountId',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        console.log(req.params)
         let acc = Account.findById(req.params.accountId).then((account) => {
         if (account.ownerId != req.user.id) {
             return res

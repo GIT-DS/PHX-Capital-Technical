@@ -3,7 +3,8 @@ import AccountCreate from "./account_create"
 import { createAccount } from "../../../actions/account_actions";
 
 const mSTP = (state, ownProps) => ({
-    currentUser: state.session.user
+    currentUser: state.session.user,
+    errors: state.errors.account
 })
 
 const mDTP = dispatch => ({

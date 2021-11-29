@@ -76,7 +76,7 @@ class AccountEdit extends React.Component{
                         <input type='text' value={this.state.address} placeholder='Address' onChange={this.update('address')}/>
 
                     </label>
-                    <button onClick={this.submitHandler}>Edit Account</button>
+                    <div id='button' onClick={this.submitHandler}>Edit Account</div>
                 </form>
             </div>
         )
