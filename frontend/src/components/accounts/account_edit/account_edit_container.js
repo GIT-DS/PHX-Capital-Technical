@@ -5,7 +5,7 @@ import { fetchAllAccounts, updateAccount } from "../../../actions/account_action
 const mSTP = (state, ownProps) => {
     return {
     currentUser: state.session.user,
-    account: state.accounts.filter(account => account._id === ownProps.match.params.accountId)[0]
+    account: state.accounts.filter(account => account._id === ownProps.match.params.accountId)[0],    errors: state.errors.account
 }}
 
 const mDTP = dispatch => ({
